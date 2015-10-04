@@ -12,12 +12,24 @@ var toneTriggers = [];
 
 module.exports = new events.EventEmitter();
 
-module.exports.addTrigger = function(name, minTone, maxTone, minLength) {
+/**
+ * Add a trigger for a specific tone.
+ * @param name string
+ * @param minTone int
+ * @param maxTone int
+ * @param minLength int
+ * @param triggerOnce bool [optional]
+ */
+module.exports.addTrigger = function(name, minTone, maxTone, minLength, triggerOnce) {
+    if (triggerOnce == undefined) {
+        triggerOnce = true;
+    }
     toneTriggers.push({
         name: name,
         minTone: minTone,
         maxTone: maxTone,
         minLength: minLength,
+        triggerOnce: triggerOnce,
         count: 0
     });
 };
@@ -52,9 +64,15 @@ function handleSndpeekData(data) {
                 //Another whistle was detected. Remove this count.
                 toneTrigger.count = 0;
             }
-            if (toneTrigger.count >= toneTrigger.minLength) {
-                module.exports.emit('tone', toneTrigger.name);
-                toneTrigger.count = 0;
+            if (toneTrigger.triggerOnce) {
+                if (toneTrigger.count == toneTrigger.minLength) {
+                    module.exports.emit('tone', toneTrigger.name);
+                }
+            } else {
+                if (toneTrigger.count >= toneTrigger.minLength) {
+                    module.exports.emit('tone', toneTrigger.name);
+                    toneTrigger.count = 0;
+                }
             }
         });
     }
