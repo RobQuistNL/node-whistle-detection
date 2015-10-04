@@ -1,0 +1,27 @@
+{
+  "name": "whistle-detection",
+  "version": "1.0.0",
+  "description": "Detect whistles from microphone input in real time",
+  "main": "index.js",
+  "dependencies": {
+    "sndpeek": "^1.0.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobQuistNL/node-whistle-detection.git"
+  },
+  "keywords": [
+    "whistle"
+  ],
+  "author": "Rob Quist",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RobQuistNL/node-whistle-detection/issues"
+  },
+  "homepage": "https://github.com/RobQuistNL/node-whistle-detection#readme"
+}
