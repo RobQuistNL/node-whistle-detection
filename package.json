@@ -1,10 +1,10 @@
 {
   "name": "whistle-detection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Detect whistles from microphone input in real time",
   "main": "index.js",
   "dependencies": {
-    "sndpeek": "^1.0.0",
+    "sndpeek": "^1.0.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {},
